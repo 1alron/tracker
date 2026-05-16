@@ -1,5 +1,10 @@
 class Task < ApplicationRecord
-  enum status: [ :new, :in_progress, :done, :cancelled ]
+  enum :status, { 
+    new: 0,
+    in_progress: 1,
+    done: 2,
+    cancelled: 3
+  }, prefix: true
 
   validates :title, presence: true
   validates :status, presence: true
