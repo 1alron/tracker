@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :update, :destroy ]
 
   def index
-    tasks = Task.all
+    tasks = TasksFilterService.new(params).call
     render json: tasks, status: :ok
   end
 
