@@ -4,7 +4,7 @@ class Task < ApplicationRecord
     in_progress: 1,
     done: 2,
     cancelled: 3
-  }, prefix: true
+  }, prefix: true, validate: true
 
   validates :title, presence: true
   validates :status, presence: true
