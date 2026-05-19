@@ -10,7 +10,7 @@ class TagsController < ApplicationController
   end
 
   def create
-    tag = Tag.new(params[:name])
+    tag = Tag.new(tag_params)
     if tag.save
       render json: tag, status: :ok
     else
