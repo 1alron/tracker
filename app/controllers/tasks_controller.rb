@@ -3,11 +3,11 @@ class TasksController < ApplicationController
 
   def index
     tasks = TasksFilterService.new(params).call
-    render json: tasks, status: :ok
+    render json: tasks.as_json(include: :tags), status: :ok
   end
 
   def show
-    render json: @task, status: :ok
+    render json: @task.as_json(include: :tags), status: :ok
   end
 
   def create
