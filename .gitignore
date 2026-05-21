@@ -10,6 +10,9 @@
 /.idea
 /.vscode
 
+# Ignore coverage
+/coverage
+
 # Ignore all environment files.
 /.env*
 

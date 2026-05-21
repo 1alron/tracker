@@ -20,7 +20,7 @@ class Task < ApplicationRecord
   validates :status, presence: true
   validates :description, presence: true
   validates :exec_date, presence: true
-  
+
   validate :recurrence_params_format, if: :recurring_task?
 
   def as_json(options = {})

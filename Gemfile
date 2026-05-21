@@ -42,6 +42,18 @@ group :development, :test do
   # Audits gems for known security defects (use config/bundler-audit.yml to ignore issues)
   gem "bundler-audit", require: false
 
+  # For writing unit-tests
+  gem "rspec-rails"
+
+  # Factories for test data
+  gem "factory_bot_rails"
+
+  # Mocks for http requests
+  gem "webmock"
+
+  # For test covering
+  gem "simplecov", require: false
+
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
 
