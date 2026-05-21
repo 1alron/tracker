@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :update, :destroy ]
+  before_action :set_task, only: [ :show, :update, :destroy ]
 
   def index
     tasks = TasksFilterService.new(params).call
@@ -29,7 +29,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    head :no_content     
+    head :no_content
   end
 
   private

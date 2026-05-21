@@ -6,7 +6,7 @@ class TagsController < ApplicationController
   end
 
   def show
-    render json: @tag, status: :ok    
+    render json: @tag, status: :ok
   end
 
   def create
@@ -33,6 +33,6 @@ class TagsController < ApplicationController
   end
 
   def tag_params
-    params.require(:tag).permit(:name)      
+    params.require(:tag).permit(:name)
   end
 end

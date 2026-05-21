@@ -2,7 +2,7 @@ class Task < ApplicationRecord
   has_many :task_tags, dependent: :destroy
   has_many :tags, through: :task_tags
 
-  enum :status, { 
+  enum :status, {
     new: 0,
     in_progress: 1,
     done: 2,
@@ -23,39 +23,39 @@ class Task < ApplicationRecord
   validates :recurrence_params_format, if: :recurring_task?
 
   def as_json(options = {})
-    super(options.merge(except: [:created_at, :updated_at]))  
+    super(options.merge(except: [ :created_at, :updated_at ]))
   end
 
-  private 
+  private
 
   def recurring_task?
-    recurrence_pattern.present?    
+    recurrence_pattern.present?
   end
 
   def recurrence_params_format
     return unless recurrence_pattern
-    
+
     case recurrence_pattern
-    when 'daily'
-      validate_daily_config    
-    when 'monthly'
+    when "daily"
+      validate_daily_config
+    when "monthly"
       validate_monthly_config
-    when 'specific_dates'
+    when "specific_dates"
       validate_specific_dates
-    when 'even_odd'
+    when "even_odd"
       validate_even_odd
     else
-      errors.add(:recurrence_pattern, 'is not valid')
+      errors.add(:recurrence_pattern, "is not valid")
     end
   end
 
   def validate_daily_config
     unless recurrence_params.is_a?(Hash)
-      errors.add(:recurrence_params, 'must be a hash for daily tasks')
+      errors.add(:recurrence_params, "must be a hash for daily tasks")
       return
     end
 
-    interval = recurrence_params['interval']
+    interval = recurrence_params["interval"]
 
     unless interval
       errors.add(:recurrence_params, "must present an 'interval' parameter for daily tasks")
@@ -63,13 +63,13 @@ class Task < ApplicationRecord
     end
 
     unless interval.is_a?(Integer) && interval > 0
-      errors.add(:recurrence_params, "'interval' parameter is invalid")      
+      errors.add(:recurrence_params, "'interval' parameter is invalid")
     end
   end
 
   # todo: add validation for other modes
   def validate_monthly_config
-    pass   
+    pass
   end
 
   def validate_specific_dates

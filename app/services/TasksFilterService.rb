@@ -25,7 +25,7 @@ class TasksFilterService
 
   def filter_by_status
     return if @params[:status].blank?
-    @tasks = @tasks.where(status: @params[:status])      
+    @tasks = @tasks.where(status: @params[:status])
   end
 
   def parse_date(date_string)

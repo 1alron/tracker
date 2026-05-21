@@ -4,12 +4,12 @@ class Tag < ApplicationRecord
 
   validates :name, presence: true
 
-  PROTECTED_TAGS  = ["отчетность", "операции", "звонок"].freeze
+  PROTECTED_TAGS  = [ "отчетность", "операции", "звонок" ].freeze
 
   before_destroy :prevent_protected_deletion
 
   def as_json(options = {})
-    super(options.merge(except: [:created_at, :updated_at]))  
+    super(options.merge(except: [ :created_at, :updated_at ]))
   end
 
   private
